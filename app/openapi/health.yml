@@ -1,0 +1,68 @@
+openapi: 3.0.0
+servers:
+  - url: http://localhost:5000
+info:
+  description: Provides the endpoints available to this API.
+  version: "0.1.0"
+  title: Jobs4You API
+  contact:
+    email: sathler93@gmail.com
+    name: Raphael Sathler
+tags:
+  - name: Jobs4You Health
+    description: Public Health Endpoints
+
+
+paths:
+  "/liveness":
+    get:
+      operationId: "app.api.HealthView.liveness"
+      tags:
+        - Jobs4You
+      summary: Returns the liveness of the application.
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InfoResponse"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+components:
+  schemas:
+    InfoResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+          description: Return the datetime on UTC
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          required:
+            - message
+            - status
+          properties:
+            message:
+              type: string
+            status:
+              type: string
+            details:
+              type: array
+              items:
+                type: string

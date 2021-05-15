@@ -1,0 +1,1 @@
+from app.api.views.health import HealthView
