@@ -4,7 +4,7 @@ from flask import current_app
 from flask.views import MethodView
 
 from app.api.serializers import HealthSerializer
-from app.core.extensions import CONFIG
+from app.core import CONFIG
 
 class HealthView(MethodView):
     

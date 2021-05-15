@@ -10,7 +10,7 @@ from app.core.extensions import CONFIG
 logger = logging.getLogger(__name__)
 
 def create_app(config: Config = CONFIG):
-    application = connexion.FlaskApp("jobs4you", specification_dir="app/openapi")
+    application = connexion.FlaskApp("Jobs4You", specification_dir="app/openapi")
 
     application.app.config.from_object(config)
 
@@ -23,3 +23,5 @@ def create_app(config: Config = CONFIG):
     )
     
     return application.app
+
+__all__ = ["create_app"]
