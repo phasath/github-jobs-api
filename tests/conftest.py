@@ -7,10 +7,11 @@ from pytest import fixture
 from app.core.extensions import CONFIG
 from app.core import create_app
 
+
 @fixture(scope="session")
 def app(request):
     _app = create_app(CONFIG)
-    
+
     ctx = _app.app_context()
     ctx.push()
 
@@ -18,7 +19,7 @@ def app(request):
         ctx.pop()
 
     request.addfinalizer(teardown)
-    
+
     with patch.multiple(
         CONFIG,
         DEBUG=True,
@@ -39,4 +40,3 @@ def parser():
 def client(app):
     with app.test_client() as client:
         yield client
-

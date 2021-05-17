@@ -20,13 +20,14 @@ class JobsSerializer(Schema):
     location = Str(required=True)
     title = Str(required=True)
 
-    fulltime = Function(lambda obj: obj['type'] == "Full Time", data_key="fulltime")
+    fulltime = Function(lambda obj: obj["type"] == "Full Time", data_key="fulltime")
 
 
 class ErrorInternalSerializer(Schema):
     title = Str(required=True)
     status = Int(required=True)
     details = Str()
+
 
 class ErrorSerializer(Schema):
     error = Nested(ErrorInternalSerializer)

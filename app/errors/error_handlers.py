@@ -9,5 +9,5 @@ def generic_error_handler(error):
             "details": str(error.args),
         }
     }
-    
+
     return ErrorSerializer().dump(payload), error.code

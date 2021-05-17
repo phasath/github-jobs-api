@@ -12,6 +12,7 @@ from app.errors.error_handlers import generic_error_handler
 
 logger = logging.getLogger(__name__)
 
+
 def create_app(config: Config = CONFIG) -> Flask:
     application = connexion.FlaskApp("Jobs4You", specification_dir="app/openapi")
 
@@ -24,7 +25,7 @@ def create_app(config: Config = CONFIG) -> Flask:
         validate_responses=True,
         options={"swagger_ui": False},
     )
-    
+
     application.add_api(
         "jobs.yml",
         base_path="",
@@ -39,5 +40,6 @@ def create_app(config: Config = CONFIG) -> Flask:
     DB.init_app(application.app)
 
     return application.app
+
 
 __all__ = ["create_app"]

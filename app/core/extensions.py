@@ -7,4 +7,4 @@ CONFIG = Config()
 REQUESTS = get_requests_session()
 DB = SQLAlchemy()
 
-__all__=["CONFIG", "REQUESTS"]
+__all__ = ["CONFIG", "REQUESTS"]
