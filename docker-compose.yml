@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+  server:
+    build: .
+    environment:
+      POSTGRES_DB: ${PGDATABASE:-jobs4you}
+      POSTGRES_USER: ${PGUSER:-jobs4you}
+      POSTGRES_PASSWORD: ${PGPASSWORD:-27613123j0b54You97402234}
+    ports:
+      - 5000:5000
+    depends_on:
+      - postgres
+      - migrations
+    links:
+      - postgres
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "gunicorn", "app.server:application", "-w", "2", "--threads", "2", "--access-logfile=-", "-b", "0.0.0.0:5000"]
+    
+  migrations:
+    build: .
+    environment:
+      POSTGRES_DB: ${PGDATABASE:-jobs4you}
+      POSTGRES_USER: ${PGUSER:-jobs4you}
+      POSTGRES_PASSWORD: ${PGPASSWORD:-27613123j0b54You97402234}
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "alembic", "upgrade", "head"]
+
+  postgres:
+    image: postgres:13-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: ${PGDATABASE:-jobs4you}
+      POSTGRES_USER: ${PGUSER:-jobs4you}
+      POSTGRES_PASSWORD: ${PGPASSWORD:-27613123j0b54You97402234}
+
+volumes:
+  postgres_data:

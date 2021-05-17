@@ -1,0 +1,7 @@
+*
+!alembic
+!app
+!alembic.ini
+!Pipfile
+!Pipfile.lock
+!scripts/wait-for-it/wait-for-it.sh

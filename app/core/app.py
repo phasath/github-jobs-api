@@ -7,7 +7,7 @@ from flask import Flask
 from werkzeug.exceptions import default_exceptions
 
 from app.core.config import Config
-from app.core.extensions import CONFIG
+from app.core.extensions import CONFIG, DB
 from app.errors.error_handlers import generic_error_handler
 
 logger = logging.getLogger(__name__)
@@ -32,10 +32,12 @@ def create_app(config: Config = CONFIG) -> Flask:
         validate_responses=True,
         options={"swagger_ui": True},
     )
-    
+
     for exc in default_exceptions:
         application.app.register_error_handler(exc, generic_error_handler)
-    
+
+    DB.init_app(application.app)
+
     return application.app
 
 __all__ = ["create_app"]

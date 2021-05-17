@@ -11,6 +11,10 @@ pytest-cov = "*"
 flask = "*"
 connexion = {extras = ["swagger-ui"], version = "*"}
 marshmallow = "*"
+gunicorn = "*"
+alembic = "*"
+flask-sqlalchemy = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.9"
