@@ -31,6 +31,7 @@ if [ $# -eq 0 ]; then
         --link "postgres-test:postgres-test" \
         --env "PGPASSWORD=postgres" \
         --env "PGDATABASE=postgres" \
+        --env "PGUSER=postgres" \
         --env "PGHOST=postgres-test" \
         "test/jobs4you:${GIT_REVISION}" \
         "scripts/pytest.sh"
@@ -41,6 +42,7 @@ else
         --link "postgres-test:postgres-test" \
         --env "PGPASSWORD=postgres" \
         --env "PGDATABASE=postgres" \
+        --env "PGUSER=postgres" \
         --env "PGHOST=postgres-test" \
         "test/jobs4you:${GIT_REVISION}" \
         "${@:-}"

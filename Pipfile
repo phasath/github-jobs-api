@@ -9,6 +9,7 @@ pytest-cov = "*"
 black = "*"
 autohooks = "*"
 autohooks-plugin-black = "*"
+requests-mock = "*"
 
 [packages]
 flask = "*"

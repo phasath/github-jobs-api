@@ -15,6 +15,7 @@ def get_conn_string():
 class Config:
     APP_ENV = os.environ.get("APP_ENV", default="development")
     DEBUG = False
+    IS_LOCAL = True if os.environ.get("IS_LOCAL", default=False) else False
     LOG_LEVEL = "INFO"
     PROPAGATE_EXCEPTIONS = False
     SQLALCHEMY_DATABASE_URI = get_conn_string()

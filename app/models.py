@@ -4,12 +4,11 @@ from datetime import datetime
 
 from sqlalchemy import Boolean, Column, DateTime, Index, String
 from sqlalchemy.dialects.postgresql import UUID, INET
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql.sqltypes import Boolean
 
 from app.core.extensions import DB
 
-Base = declarative_base()
+Base = DB.Model
 metadata = Base.metadata
 
 
