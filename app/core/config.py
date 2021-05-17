@@ -14,6 +14,10 @@ def get_conn_string():
 
 class Config:
     APP_ENV = os.environ.get("APP_ENV", default="development")
+    BASIC_AUTH_USERNAME = os.environ.get(
+        "BASIC_AUTH_USERNAME", default="jobs4youmanager"
+    )
+    BASIC_AUTH_PASSWORD = os.environ.get("BASIC_AUTH_PASSWORD", default="admin")
     DEBUG = False
     IS_LOCAL = True if os.environ.get("IS_LOCAL", default=False) else False
     LOG_LEVEL = "INFO"

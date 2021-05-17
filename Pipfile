@@ -19,6 +19,8 @@ gunicorn = "*"
 alembic = "*"
 flask-sqlalchemy = "*"
 psycopg2-binary = "*"
+flask-admin = "*"
+flask-basicauth = "*"
 
 [requires]
 python_version = "3.9"
