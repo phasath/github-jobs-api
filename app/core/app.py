@@ -25,6 +25,13 @@ def create_app(config: Config = CONFIG) -> Flask:
         options={"swagger_ui": False},
     )
     
+    application.add_api(
+        "jobs.yml",
+        base_path="",
+        resolver=MethodViewResolver("app.api"),
+        validate_responses=True,
+        options={"swagger_ui": True},
+    )
     
     for exc in default_exceptions:
         application.app.register_error_handler(exc, generic_error_handler)

@@ -1,0 +1,125 @@
+openapi: 3.0.0
+servers:
+  - url: http://localhost:5000
+info:
+  description: Provides the endpoints available to get the jobs on this API.
+  version: "0.1.0"
+  title: Jobs4You API
+  contact:
+    email: sathler93@gmail.com
+    name: Raphael Sathler
+tags:
+  - name: Jobs
+    description: Public Jobs Endpoints
+
+
+paths:
+  "/jobs":
+    get:
+      tags:
+        - Jobs
+      summary: Returns the jobs available
+      parameters:
+        - name: location
+          in: query
+          schema:
+            type: string
+            enum:
+              - chicago
+              - san francisco
+              - phoenix
+              - london
+              - beijing
+              - paris
+          required: false
+          description: City in which the job is available
+        - name: language
+          in: query
+          schema:
+            type: string
+            enum:
+              - javascript
+              - java
+              - python
+              - react
+              - ruby
+              - go
+          required: false
+          description: programming language expected for the job
+        - name: fulltime
+          in: query
+          schema:
+            type: boolean
+            default: False
+          description: whether the job is full time or not
+      responses:
+        "200":
+          description: Return the available jobs
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JobsResponse"
+        "4XX":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "5XX":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+
+components:
+  schemas:
+    JobsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          company:
+            type: string
+          company_logo:
+            type: string
+            nullable: true
+          company_url:
+            type: string
+            nullable: true
+          created_at:
+            type: string
+            format: date-time
+            description: Return the datetime on UTC
+          description:
+            type: string
+          fulltime:
+            type: boolean
+          how_to_apply:
+            type: string
+          id:
+            type: string
+            format: uuid
+          location:
+            type: string
+          title:
+            type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          required:
+            - title
+            - status
+          properties:
+            title:
+              type: string
+            status:
+              type: string
+            details:
+              type: string
+            type:
+              type: string
