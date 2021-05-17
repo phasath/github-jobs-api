@@ -10,17 +10,24 @@ from app.core import create_app
 
 @fixture(scope="session")
 def app(request):
-    _app = create_app(CONFIG)
+    with patch.multiple(
+        CONFIG,
+        DEBUG=True,
+        TESTING=True,
+        IS_LOCAL=True,
+        BASIC_AUTH_USERNAME="test",
+        BASIC_AUTH_PASSWORD="test",
+    ):
+        _app = create_app(CONFIG)
 
-    ctx = _app.app_context()
-    ctx.push()
+        ctx = _app.app_context()
+        ctx.push()
 
-    def teardown():
-        ctx.pop()
+        def teardown():
+            ctx.pop()
 
-    request.addfinalizer(teardown)
+        request.addfinalizer(teardown)
 
-    with patch.multiple(CONFIG, DEBUG=True, TESTING=True, IS_LOCAL=True):
         yield _app
 
 
