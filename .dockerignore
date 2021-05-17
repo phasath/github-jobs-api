@@ -1,6 +1,7 @@
 *
 !alembic
 !app
+!tests
 !alembic.ini
 !Pipfile
 !Pipfile.lock

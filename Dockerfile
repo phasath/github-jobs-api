@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.9.5-slim-buster
+FROM python:3.9.5-slim-buster AS jobs4you_base
 
 # set work directory
 WORKDIR /code/
@@ -23,4 +23,8 @@ CMD [\
     "--threads", "2",\
     "--access-logfile=-",\
     "-b", "0.0.0.0:5000"\
-]
+    ]
+
+FROM jobs4you_base AS jobs4you_test
+
+RUN set -ex && pipenv install --deploy --system --dev
