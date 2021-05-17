@@ -4,9 +4,11 @@ import connexion
 
 from connexion.resolver import MethodViewResolver
 from flask import Flask
+from werkzeug.exceptions import default_exceptions
 
 from app.core.config import Config
 from app.core.extensions import CONFIG
+from app.errors.error_handlers import generic_error_handler
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +24,10 @@ def create_app(config: Config = CONFIG) -> Flask:
         validate_responses=True,
         options={"swagger_ui": False},
     )
+    
+    
+    for exc in default_exceptions:
+        application.app.register_error_handler(exc, generic_error_handler)
     
     return application.app
 
