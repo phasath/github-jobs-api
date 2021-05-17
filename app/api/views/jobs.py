@@ -23,13 +23,9 @@ class JobsView(MethodView):
         language: Optional[str] = None,
         fulltime: bool = False,
     ) -> Dict:
-        base_params = {
+        req_params = {
             "location": f'"{location}"' if location else None,
             "description": f'"{language}"' if language else None,
-        }
-
-        req_params = {
-            **base_params,
             "full_time": f"on" if fulltime else None,
             "utf8": "✓",
         }
@@ -42,7 +38,8 @@ class JobsView(MethodView):
             jobs = res.json()
 
         search_data = {
-            **base_params,
+            "location": location,
+            "description": language,
             "full_time": fulltime,
             "ip_address": request.remote_addr,
         }

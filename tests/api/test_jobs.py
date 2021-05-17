@@ -45,13 +45,11 @@ def test_get_jobs(
         assert len(response) == len(expected)
 
         if st_code == 200:
-            q_location = f'"{location}"' if location else None
-            q_language = f'"{language}"' if language else None
 
             db_data = (
                 Search.query.filter(
-                    Search.location == q_location,
-                    Search.description == q_language,
+                    Search.location == location,
+                    Search.description == language,
                     Search.full_time == fulltime,
                 )
                 .order_by(Search.time.desc())
