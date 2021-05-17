@@ -9,7 +9,7 @@ pytest-cov = "*"
 
 [packages]
 flask = "*"
-connexion = "*"
+connexion = {extras = ["swagger-ui"], version = "*"}
 marshmallow = "*"
 
 [requires]

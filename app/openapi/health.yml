@@ -2,14 +2,14 @@ openapi: 3.0.0
 servers:
   - url: http://localhost:5000
 info:
-  description: Provides the endpoints available to this API.
+  description: Provides the endpoints available to check the health of this API.
   version: "0.1.0"
   title: Jobs4You API
   contact:
     email: sathler93@gmail.com
     name: Raphael Sathler
 tags:
-  - name: Jobs4You Health
+  - name: Health
     description: Public Health Endpoints
 
 
@@ -18,7 +18,7 @@ paths:
     get:
       operationId: "app.api.HealthView.liveness"
       tags:
-        - Jobs4You
+        - Health
       summary: Returns the liveness of the application.
       responses:
         "200":
@@ -55,14 +55,11 @@ components:
         error:
           type: object
           required:
-            - message
             - status
           properties:
-            message:
+            title:
               type: string
             status:
               type: string
             details:
-              type: array
-              items:
-                type: string
+              type: string
