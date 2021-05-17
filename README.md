@@ -10,3 +10,61 @@ This is a simple implementation of an interface to the github jobs api. Our plan
 6 - I will use Docker to set up the application, the database and the redis instance.
 7 - I will deploy this application to heroku. 
 
+# How to run
+
+## Dependencies
+
+This repository depends on the usage of:
+- [Docker](https://docs.docker.com/engine/install/) 
+- [Docker-Compose](https://docs.docker.com/compose/install/)
+
+If you want to run locally, you will also need:
+- [PipEnv](https://pipenv-fork.readthedocs.io/en/latest/install.html#installing-pipenv)
+
+## Building
+
+To build the project, use:
+```shell
+$ docker-compose up
+```
+
+## Start
+
+To start the project, use:
+```shell
+$ docker-compose start
+```
+
+If you want to run locally but make use of the database only, you can run:
+
+```shell
+$ docker-compose start postgres migrations
+```
+With the database started, you can use the `pipenv`:
+
+```shell
+$ pipenv install
+$ pipenv shell
+$ pipenv run local
+```
+
+Note that `local` is a script inside `Pipfile` that starts a local development server to make usage of auto-reloading and debugging.
+
+## Tests
+
+To run the tests, you can use:
+
+```shell
+$ pipenv install
+$ pipenv shell
+$ pipenv run tests
+```
+
+# PipEnv Autohooks
+
+This repository is making use of Pipenv autohooks to auto-format the code using black. 
+
+This is installed running:
+```shell
+$ pipenv run autohooks activate
+```
