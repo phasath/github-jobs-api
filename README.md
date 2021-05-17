@@ -67,4 +67,5 @@ This repository is making use of Pipenv autohooks to auto-format the code using 
 This is installed running:
 ```shell
 $ pipenv run autohooks activate
+$ pipenv run autohooks check
 ```

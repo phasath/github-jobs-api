@@ -6,6 +6,9 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
+black = "*"
+autohooks = "*"
+autohooks-plugin-black = "*"
 
 [packages]
 flask = "*"
@@ -22,3 +25,6 @@ python_version = "3.9"
 [scripts]
 local = "bash scripts/run_local.sh"
 tests = "bash scripts/run_tests.sh"
+
+[pipenv]
+allow_prereleases = true
