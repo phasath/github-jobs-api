@@ -1,4 +1,4 @@
-from app.core import CONFIG
+from app.core.extensions import CONFIG
 
 def test_liveness(client, parser):
     res = client.get('/health/liveness')

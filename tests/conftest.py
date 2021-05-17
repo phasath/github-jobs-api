@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 from pytest import fixture
 
-from app.core import CONFIG
+from app.core.extensions import CONFIG
 from app.core import create_app
 
 @fixture(scope="session")
