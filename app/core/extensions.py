@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_caching import Cache
 
 from app.core.config import Config
 from app.util.requests import get_requests_session
@@ -22,5 +23,7 @@ DB = SQLAlchemy(
     engine_options=DB_ENGINE_OPTIONS,
     session_options=DB_SESSION_OPTIONS,
 )
+
+CACHE = Cache()
 
 __all__ = ["CONFIG", "REQUESTS"]

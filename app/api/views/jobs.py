@@ -8,7 +8,7 @@ from flask.views import MethodView
 from requests import status_codes
 
 from app.api.serializers import JobsSerializer
-from app.core.extensions import REQUESTS
+from app.core.extensions import CACHE, REQUESTS
 
 from app.models import Search
 
@@ -17,6 +17,10 @@ class JobsView(MethodView):
 
     schema = JobsSerializer()
 
+    def __repr__(self):
+        return "jobs-view"
+
+    @CACHE.memoize()
     def search(
         self,
         location: Optional[str] = None,

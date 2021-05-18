@@ -8,7 +8,7 @@ from werkzeug.exceptions import default_exceptions
 
 from app.core.admin import admin_setup
 from app.core.config import Config
-from app.core.extensions import CONFIG, DB
+from app.core.extensions import CACHE, CONFIG, DB
 from app.errors.error_handlers import generic_error_handler
 
 logger = logging.getLogger(__name__)
@@ -39,6 +39,8 @@ def create_app(config: Config = CONFIG) -> Flask:
         application.app.register_error_handler(exc, generic_error_handler)
 
     DB.init_app(application.app)
+
+    CACHE.init_app(application.app)
 
     admin_setup(application.app)
 

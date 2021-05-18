@@ -21,6 +21,8 @@ flask-sqlalchemy = "*"
 psycopg2-binary = "*"
 flask-admin = "*"
 flask-basicauth = "*"
+flask-caching = "*"
+redis = "*"
 
 [requires]
 python_version = "3.9"

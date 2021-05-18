@@ -5,7 +5,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from app.core.config import get_conn_string
+from app.core.config import get_psql_conn_string
 from app.models import metadata
 
 # this is the Alembic Config object, which provides
@@ -27,7 +27,7 @@ target_metadata = metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-config.set_main_option("sqlalchemy.url", get_conn_string())
+config.set_main_option("sqlalchemy.url", get_psql_conn_string())
 
 
 def run_migrations_offline():
