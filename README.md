@@ -53,7 +53,7 @@ $ pipenv install
 $ pipenv shell
 $ pipenv run local
 ```
-> Note that, to change the code in the container as you change in the repo, you'll need to add a volumes on the docker-compose file
+> Note that, to change the code in the container as you change in the repo, you'll need to add a volumes on the docker-compose file.
 > Also, observe that `local` is a script inside `Pipfile` that starts a local development server to make usage of auto-reloading and debugging.
 
 ## Tests
