@@ -17,6 +17,7 @@ def app(request):
         IS_LOCAL=True,
         BASIC_AUTH_USERNAME="test",
         BASIC_AUTH_PASSWORD="test",
+        CACHE_TYPE="SimpleCache",
     ):
         _app = create_app(CONFIG)
 

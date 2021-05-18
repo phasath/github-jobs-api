@@ -58,3 +58,5 @@ def test_get_jobs(
             )
 
             TestCase().assertTrue(db_data)
+
+            assert str(db_data) == f"<ID {db_data.id}>"
