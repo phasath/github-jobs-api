@@ -1,0 +1,22 @@
+body {
+    min-height: 100vh;
+    background-color: #FFE53B;
+    background-image: linear-gradient(147deg, #205eec 0%, #FF2525 100%);
+}
+
+tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+table.dataTable th {
+    width: 50px;
+    max-width: 150px;
+    word-break: break-all;
+    white-space: pre-line;
+}
+
+table.dataTable tbody td {
+    max-width: 0;
+}
