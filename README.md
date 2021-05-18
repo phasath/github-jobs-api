@@ -60,6 +60,27 @@ $ pipenv shell
 $ pipenv run tests
 ```
 
+## How to use
+
+### Documentation
+
+For the API documentation, you can check on the following url:
+
+```
+{URL}/ui -> localhost:5000/api/ui
+```
+You can also try the endpoints if the API is running locally. 
+
+There's one hidden endpoint from the API documentation that is used only to know whether the server is alive: `liveness`.
+
+### Admin
+
+To connect to the Admin and have access to read and change the database, you can use the following url:
+```
+{URL}/admin -> localhost:5000/api/admin
+```
+To connect, the default user/password is jobs4youmanager/admin. If you're going to use this somewhere else, set up the correct environment variables to change the admin's user and password.
+
 # PipEnv Autohooks
 
 This repository is making use of Pipenv autohooks to auto-format the code using black. 
