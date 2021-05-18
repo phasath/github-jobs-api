@@ -46,15 +46,15 @@ If you want to run locally but make use of the database only, you can run:
 ```shell
 $ docker-compose start postgres migrations
 ```
-With the database started, you can use the `pipenv` locally or in the container. Note that, to change the code in the container as you change in the repo, you'll need to add a volumes on the docker-compose file:
+With the database started, you can use the `pipenv` locally or in the container:
 
 ```shell
 $ pipenv install
 $ pipenv shell
 $ pipenv run local
 ```
-
-Note that `local` is a script inside `Pipfile` that starts a local development server to make usage of auto-reloading and debugging.
+> Note that, to change the code in the container as you change in the repo, you'll need to add a volumes on the docker-compose file
+> Also, observe that `local` is a script inside `Pipfile` that starts a local development server to make usage of auto-reloading and debugging.
 
 ## Tests
 
@@ -73,7 +73,7 @@ $ pipenv run tests
 For the API documentation, you can check on the following url:
 
 ```
-{URL}/ui -> localhost:5000/api/ui
+{URL}/api/ui -> localhost/api/ui
 ```
 You can also try the endpoints if the API is running locally. 
 
@@ -83,7 +83,7 @@ There's one hidden endpoint from the API documentation that is used only to know
 
 To connect to the Admin and have access to read and change the database, you can use the following url:
 ```
-{URL}/admin -> localhost:5000/api/admin
+{URL}/api/admin -> localhost/api/admin
 ```
 To connect, the default user/password is jobs4youmanager/admin. If you're going to use this somewhere else, set up the correct environment variables to change the admin's user and password.
 
