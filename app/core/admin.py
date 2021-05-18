@@ -89,7 +89,7 @@ def admin_setup(appl):
     admin = Admin(
         appl,
         name="Jobs4You Admin",
-        index_view=PanelAdminIndexView(url="/admin"),
+        index_view=PanelAdminIndexView(url="/api/admin"),
         template_mode="bootstrap4",
     )
 

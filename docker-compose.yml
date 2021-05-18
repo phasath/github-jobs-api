@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  server:
+  jobs4you-api:
     build: .
     volumes:
       - .:/code
@@ -9,8 +9,8 @@ services:
       POSTGRES_DB: ${PGDATABASE:-jobs4you}
       POSTGRES_USER: ${PGUSER:-jobs4you}
       POSTGRES_PASSWORD: ${PGPASSWORD:-27613123j0b54You97402234}
-    ports:
-      - 5000:5000
+    expose:
+      - "5000"
     depends_on:
       - postgres
       - migrations
@@ -44,9 +44,20 @@ services:
       POSTGRES_PASSWORD: ${PGPASSWORD:-27613123j0b54You97402234}
   
   redis:
-    image: "redis:alpine"
+    image: redis:alpine
     ports:
       - 6379:6379
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./web:/usr/share/nginx/html
+    depends_on:
+      - jobs4you-api
+    ports:
+      - "80:80"
+      - "443:443"
 
 volumes:
   postgres_data:

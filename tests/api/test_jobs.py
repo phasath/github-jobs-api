@@ -37,7 +37,7 @@ def test_get_jobs(
         r_fulltime = f"fulltime={fulltime}" if fulltime else ""
 
         res = client.get(
-            f"/jobs?{r_location}&{r_language}&{r_fulltime}",
+            f"/api/jobs?{r_location}&{r_language}&{r_fulltime}",
         )
 
         st_code, response = parser(res)

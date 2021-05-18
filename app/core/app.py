@@ -21,7 +21,7 @@ def create_app(config: Config = CONFIG) -> Flask:
 
     application.add_api(
         "health.yml",
-        base_path="/health",
+        base_path="/api/health",
         resolver=MethodViewResolver("app.api"),
         validate_responses=True,
         options={"swagger_ui": False},
@@ -29,7 +29,7 @@ def create_app(config: Config = CONFIG) -> Flask:
 
     application.add_api(
         "jobs.yml",
-        base_path="",
+        base_path="/api",
         resolver=MethodViewResolver("app.api"),
         validate_responses=True,
         options={"swagger_ui": True},

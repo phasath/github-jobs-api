@@ -12,7 +12,6 @@ tags:
   - name: Jobs
     description: Public Jobs Endpoints
 
-
 paths:
   "/jobs":
     get:
@@ -25,12 +24,12 @@ paths:
           schema:
             type: string
             enum:
-              - chicago
-              - san francisco
-              - phoenix
-              - london
               - beijing
+              - chicago
+              - london
               - paris
+              - phoenix
+              - san francisco
           required: false
           description: City in which the job is available
         - name: language
@@ -38,12 +37,12 @@ paths:
           schema:
             type: string
             enum:
-              - javascript
+              - go
               - java
+              - javascript
               - python
               - react
               - ruby
-              - go
           required: false
           description: programming language expected for the job
         - name: fulltime
@@ -71,7 +70,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-
 
 components:
   schemas:
