@@ -46,7 +46,7 @@ If you want to run locally but make use of the database only, you can run:
 ```shell
 $ docker-compose start postgres migrations
 ```
-With the database started, you can use the `pipenv`:
+With the database started, you can use the `pipenv` locally or in the container. Note that, to change the code in the container as you change in the repo, you'll need to add a volumes on the docker-compose file:
 
 ```shell
 $ pipenv install
